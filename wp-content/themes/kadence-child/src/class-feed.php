@@ -6,6 +6,7 @@
  */
 
 namespace Mihdan\Kadence_Child;
+use WP_Query;
 
 /**
  * Class Feed
@@ -15,6 +16,13 @@ class Feed {
 
 	public function setup_hooks() {
 		add_filter( 'the_excerpt_rss', [ $this, 'add_tags' ], 99 );
+		add_action( 'pre_get_posts', [ $this, 'add_events_to_feed' ], 99 );
+	}
+
+	public function add_events_to_feed( WP_Query $wp_query ) {
+		if ( is_main_query() && is_feed() ) {
+			$wp_query->set( 'post_type', [ 'post', 'event' ] );
+		}
 	}
 
 	public function add_tags( $content ) {
