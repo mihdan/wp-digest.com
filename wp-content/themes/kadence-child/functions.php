@@ -657,11 +657,12 @@ add_filter(
 );
 
 add_action(
-    'kadence_before_main_content',
+    'kadence_after_main_content',
     function () {
         ?>
         <style>
             .loading-express {
+                margin-top: 2rem;
                 margin-bottom: 2rem;
                 min-height: 176px;
                 background-color: #1b2638
@@ -675,5 +676,24 @@ add_action(
         <div class="loading-express" data-widget="loading.express"></div>
         <script src="//widget.loading.express/check.js" async></script>
         <?php
-    }
+    },
+    12
 );
+
+add_action(
+    'kadence_single_after_entry_title____',
+    //'kadence_after_main_content',
+    function () {
+        ?>
+        <div style="padding: 1rem 0">
+            <?php
+            echo apply_shortcodes( '[responsivevoice_button rate="0.9" pitch="0.7" volume="0.5" voice="Russian Female" buttontext="Прослушать"]' );
+            ?>
+        </div>
+        <?php
+    },
+    1
+);
+
+add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
+add_filter( 'use_widgets_block_editor', '__return_false' );
