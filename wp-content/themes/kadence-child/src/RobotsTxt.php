@@ -1,0 +1,62 @@
+<?php
+/**
+ *
+ */
+
+namespace Mihdan\Kadence_Child;
+
+/**
+ * Class RobotsTxt
+ */
+class RobotsTxt {
+	public function setup_hooks() {
+		add_filter( 'robots_txt', [ $this, 'add_rules' ], 11 );
+	}
+
+	public function add_rules( string $rules ): string {
+		return $rules . implode( PHP_EOL, $this->get_rules() );
+	}
+
+	private function get_rules(): array {
+		return [
+			'User-agent: *',
+			'Disallow: /cgi-bin',
+			'Disallow: /?',
+			'Disallow: /wp-',
+			'Disallow: *?s=',
+			'Disallow: *&s=',
+			'Disallow: /search',
+			'Disallow: /author/',
+			'Disallow: *?attachment_id=',
+			'Disallow: */feed',
+			'Disallow: */rss',
+			'Disallow: */embed',
+			'Disallow: */page/',
+			'Disallow: /xmlrpc.php',
+			'Disallow: */comment',
+			'Disallow: */comments',
+			'Disallow: /trackback/',
+			'Disallow: */trackback',
+			'Allow: */uploads',
+			'Allow: /?amp',
+			'Allow: /feed/mihdan-yandex-turbo-feed/',
+			'Allow: /feed/mihdan-mailru-pulse-feed/',
+			'Allow: /*/*.js',
+			'Allow: /*/*.css',
+			'Allow: /wp-*.png',
+			'Allow: /wp-*.jpg',
+			'Allow: /wp-*.jpeg',
+			'Allow: /wp-*.gif',
+			'Allow: /wp-*.webp',
+			'Allow: /wp-*.webm',
+			'Allow: /wp-*.svg',
+			'Allow: /wp-*.ttf',
+			'Allow: /wp-*.woff',
+			'Allow: /wp-*.woff2',
+			'User-agent: YandexNews',
+			'Allow: /feed/mihdan-yandex-news-feed/',
+			'Host: https://wp-digest.com',
+			'Sitemap: https://wp-digest.com/sitemap.xml',
+		];
+	}
+}

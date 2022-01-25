@@ -39,6 +39,7 @@ class Main {
 			Performance::class,
 			Lazy_Load::class,
 			CF7::class,
+			RobotsTxt::class,
 			SEO::class,
 			Schema_Org::class,
 			//Subscription::class,
