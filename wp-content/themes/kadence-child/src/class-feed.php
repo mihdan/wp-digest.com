@@ -20,7 +20,9 @@ class Feed {
 	}
 
 	public function add_events_to_feed( WP_Query $wp_query ) {
-		if ( is_main_query() && is_feed() ) {
+		$language = wpml_get_current_language();
+
+		if ( is_main_query() && is_feed() && $language === 'ru' ) {
 			$wp_query->set( 'post_type', [ 'post', 'event' ] );
 		}
 	}

@@ -63,6 +63,9 @@
     .post-thumbnail {
         padding-bottom: 56.25% !important;
     }
+    .cover {
+        height: 100%;
+    }
 }
 
 .read-more {
@@ -381,4 +384,13 @@
 
 .post-thumbnail {
     //background-color: red;
+}
+
+.promo {
+    &--sidebar {
+        + .percentPointerClass {
+            min-height: 500px;
+            background-color: #e7eaef;
+        }
+    }
 }

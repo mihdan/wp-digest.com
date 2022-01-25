@@ -19,6 +19,7 @@ Disallow: */trackback
 Allow: */uploads
 Allow: /?amp
 Allow: /feed/mihdan-yandex-turbo-feed/
+Allow: /feed/mihdan-mailru-pulse-feed/
 Allow: /*/*.js
 Allow: /*/*.css
 Allow: /wp-*.png

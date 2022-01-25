@@ -75,6 +75,10 @@ class SEO {
 			return 'Календарь событий и мероприятий WordPress';
 		}
 
+		if ( is_post_type_archive( 'vacancy' ) ) {
+			return 'Вакансии WordPress';
+		}
+
 		return $title;
 
 	}
@@ -85,8 +89,12 @@ class SEO {
 			//$description = 'My custom description';
 		}
 
-		if ( null === $args && is_archive() ) {
+		if ( is_archive() ) {
 			$description = sprintf( 'В этой рубрике мы расскажем про %s и всё, что с этим связано.', mb_convert_case( single_cat_title( '', false ), MB_CASE_LOWER ) );
+		}
+
+		if ( null === $args && is_post_type_archive( 'vacancy' ) ) {
+			return 'Всегда свежая подборка новых вакансий про WordPress, удалённая работа на WordPress, разработчки WordPress, WordPress удалённо, WordPress программист';
 		}
 
 		// В description выводим текст до тега load more.
