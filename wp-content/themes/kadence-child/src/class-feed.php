@@ -42,7 +42,8 @@ class Feed {
 			}
 		}
 
-		$tags = wp_get_post_terms( $post->ID, 'post_tag', [ 'fields' => 'names' ] );
+		$tags = wp_get_post_terms( $post->ID, 'post_tag', [ 'fields' => 'all' ] );
+		$tags = wp_list_pluck( $tags, 'slug');
 		$tags = array_map(
 			function ( $tag ) {
 				return $this->convert_text_to_hashtag( $tag );
